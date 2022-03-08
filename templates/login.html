@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>住院床位管理系统</title>
+    <style>
+        #footer1 {
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: black;
+            font-family: Arial;
+            font-size: 12px;
+            letter-spacing: 1px;
+            z-index: 9999;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/main2.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/spin.css">
+    <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/fun.base.js"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/plugins/sweetalert.min.js"></script>
+</head>
+<body>
+
+
+<div class="login">
+    <div class="box png">
+        <div class="logo png"></div>
+        <div class="input">
+            <div class="log">
+                <div style="border: 5px;margin: -20px 0;width: 350px;height: 200px">
+                    <center>
+                        <form method="post" enctype="multipart/form-data" id="test_form">
+                            <h3 style="margin-top: -20px">住院床位管理系统</h3>
+
+                            <div class="name" style="margin-left: -60px">
+                                <label>用户名:</label><input type="text" class="text" id="userName" value=""
+                                                                   placeholder="请输入用户名" name="userName" tabindex="1"
+                                                                   required="required">
+                            </div>
+                            <div class="pwd" style="margin-left: -60px">
+                                <label>密　码:</label><input type="password" class="text" id="password" value=""
+                                                          placeholder="请输入密码" name="password" tabindex="2"
+                                                          required="required">
+                            </div>
+                            <div id="error" style="color: red;display: none;margin-bottom:10px">用户名或者密码不正确！</div>
+                            <div>
+                                <input type="button" class="btn btn-info" tabindex="3" style="width: 100px;"
+                                       value="登录"/>
+                                <div class="check"></div>
+                            </div>
+                            <div class="tip"></div>
+                        </form>
+                    </center>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="air-balloon ab-1 png"></div>
+    <div class="air-balloon ab-2 png"></div>
+    <div class="footer">
+
+    </div>
+
+</div>
+
+</body>
+<script>
+    $(function () {
+        $("input[type=button]").click(function () {
+            var userName = $("#userName").val();
+            var password = $("#password").val();
+            if ("" == userName || undefined == userName) {
+                swal("登录失败!", "用户名不能为空", "error");
+                return
+            }
+            if ("" == password || undefined == password) {
+                swal("登录失败!", "密码不能为空", "error");
+                return
+            }
+            window.localStorage.setItem('userName', userName);
+            window.localStorage.setItem('password', password);
+            console.log(userName,password)
+            $.ajax({
+                type: 'GET',
+                url: "/login_check/",
+                dataType: 'json', //服务端返回json格式的数据
+                data: {'name':userName,'password':password},
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { // 这里的data就是返回的json格式的数据
+
+                    window.location.href = "/index/"
+                },
+                error: function (xhr, type) {
+                    if(xhr.status==403){
+                    document.getElementById('error').style.display = 'inline'
+                        }else if(xhr.status==402){
+                        document.getElementById('error2').style.display = 'inline'
+                    }
+                }
+            });
+
+        })
+    })
+
+var cpparam = {
+  setParam: function(href, key, value){
+    //重新加载整个页面
+    var isReplaced = false;
+    var urlArray = href.split("?");
+    if(urlArray.length > 1){
+      var queryArray = urlArray[1].split("&");
+      for(var i=0; i < queryArray.length; i++){
+        var paramArray = queryArray[i].split("=");
+        if(paramArray[0] == key){
+          paramArray[1] = value;
+          queryArray[i] = paramArray.join("=");
+          isReplaced = true;
+          break;
+        }
+      }
+      if(!isReplaced){
+        var params = {};
+        params[key] = value;
+        if(urlArray.length > 1){
+          href = href + "$" + $.param(params);
+        }else{
+          href = href + "?" + $.param(params);
+        }
+      }else{
+        var params = queryArray.join("&");
+        urlArray[1] = params;
+        href = urlArray.join("?");
+      }
+    }else{
+      var param = {};
+      param[key] = value;
+      if(urlArray.length > 1){
+        href = href + "$" + $.param(param);
+      }else{
+        href = href + "?" + $.param(param);
+      }
+    }
+    return href;
+  }
+};
+</script>
+</html>
+

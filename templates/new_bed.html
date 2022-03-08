@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    {% block style %}
+
+
+<style>
+/* 登录按钮的css，cursor:pointer当鼠标移到按钮上面时变成小手形状 */
+form button{
+    width:100%;
+    padding:10px;
+    background-color:#CDC673;
+    border:1px solid black;
+    border-radius:4px;
+    cursor:pointer;
+}
+.div-bor{
+
+position: relative;width: 200px;
+
+}
+
+.active:after {
+	width:calc(100% - 2px)
+}
+
+</style>
+    {% endblock %}
+</head>
+<body class="app sidebar-mini">
+    {% block content %}
+    <main class="app-content">
+        <div class="app-title">
+            <div>
+                <h1><i class="fa fa-file-code-o"></i> 新增床位</h1>
+                <p>新增床位信息</p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+                <li class="breadcrumb-item"><a href="#">新增床位</a></li>
+            </ul>
+        </div>
+      <div class="widget-content padded clearfix" style="background-color: #FFF">
+          <div class="row">
+              <div class="widget-content padded clearfix" style="margin:0 auto;margin-top: 20px;margin-bottom: 20px;font-size: 16px">
+                  <form class="" id="my-form" method="post"  action="/add_bed/" >
+                      <div  class=" form-inline form-group input-group">
+                          <label  for="name" class="col-sm-5" >床位名称: </label>
+                          <input autocomplete="off" id="name" class='form-control col-sm-7' name="name" type="text" placeholder="请输入床位名称"  required="required"/>
+                      </div>
+                      <div  class="form-inline form-group">
+                          <label  for="price" class="col-sm-5">床位价格: </label>
+<!--                          <input type="text" id="price" class='form-control col-sm-7' name="price"  />-->
+                          <select id="price" class='form-control col-sm-7' name="price"  >
+                              <option>100元</option>
+                               <option>200元</option>
+                               <option>300元</option>
+                              <option>400元</option>
+                               <option>500元</option>
+                               <option>600元</option>
+                               <option>700元</option>
+                               <option>800元</option>
+                               <option>900元</option>
+                               <option>1000元</option>
+                          </select>
+                      </div>
+
+                      <div  class="form-inline form-group">
+                          <label  for="department" class="col-sm-5">所属科室: </label>
+                          <select id = "department" name="department" class="form-control col-sm-7" style="width: 56%">
+                              {%for i in result.department%}
+                              <option>{{i}}</option>
+                           {% endfor %}
+                          </select>
+                      </div>
+                      <div  class="form-inline form-group">
+                          <label autocomplete="off" for="addr" class="col-sm-5">床位楼层: </label>
+                          <input type="type" class='form-control col-sm-7'id="addr" name="addr" data-ideal="phone"  placeholder="请输入床位楼层" required="required"/>
+                      </div>
+
+                      <div style="text-align: center;margin-left: -120px">
+                          <input  id="user_info_button" type="submit" class="btn btn-info" style="margin-left: 50px" value="新增" />
+                          <input  type="button"  class="btn btn-info"  onclick="javascript:history.go(-1);" style="margin-left: 10px" value="取消"/>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </main>
+    {% endblock  %}
+
+{% block script %}
+<script>
+
+    $("input").focus(function() {
+       $(this).parent("label").addClass("active");
+    });
+
+    $("input").blur(function() {
+       if ($(this).val() == "") {
+           $(this).parent("label").removeClass("active");
+            }
+    })
+
+    // $(function () {
+    //      $("#name").blur(function () {
+    //      var user_name = $("#name").val();
+    //      if (user_name){
+    //           $.ajax({
+    //               type:"get",
+    //               dataType:"json",
+    //               url:"/user/judge/" + user_name + "/0/",
+    //               data:{"user_name":user_name},
+    //               success:function (data) {
+    //                   var message = data.message;
+    //                   if(message == "1") {
+    //                       document.getElementById('error').style.visibility = 'visible';
+    //                       $("#user_info_button").prop('disabled',true);
+    //                   }else {
+    //                       document.getElementById('error').style.visibility = 'hidden';
+    //                       $("#user_info_button").prop('disabled',false);
+    //                   }
+    //               },
+    //           });
+    //         }
+    //     })
+    // });
+
+
+
+
+
+</script>
+{% endblock %}
+</body>
+</html>

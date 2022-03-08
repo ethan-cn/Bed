@@ -1,0 +1,24 @@
+1、python3.6
+2、安装MySQL 5.7 
+3、安装python包
+pip install -r requirements.txt
+修改settings.py的数据库信息，改成你的mysql ip地址
+4、创建数据库并导入数据
+create database hospital_bed;
+grant all on hospital_bed.* to 'hospital_bed'@'%' identified by '123456';
+use hospital_bed
+source hospital_bed.sql
+
+5、修改代码文件
+将环境中的env\lib\site-packages\django\db\backends\mysql\operations.py 文件 146行
+decode 改成 encode 否则会报下面错误：
+AttributeError: 'str' object has no attribute 'decode'
+
+6、运行程序
+python manage.py runserver 0.0.0.0:8000
+7、登陆
+浏览器访问：
+http://127.0.0.1:8000
+用户：
+管理员/123456
+陈医生/123456
