@@ -1,10 +1,19 @@
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 import sys, os
 from django.utils import timezone
 from django.core.paginator import Paginator
 from utils.common import my_login
+import os
+import sys
+
+from django.core.paginator import Paginator
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.utils import timezone
+
+from utils.common import my_login
+
 work_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(1, work_dir)
 from .models import UserTable
@@ -14,7 +23,6 @@ sys.path.insert(1, patient_dir)
 from patient.models import Department
 from bed.models import Bed
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib import auth
 
 
 def login(request):
