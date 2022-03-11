@@ -8,12 +8,12 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-file-code-o"></i> 用户管理</h1>
-            <p>用户详细信息</p>
+            <h1><i class="fa fa-file-code-o"></i> User Management</h1>
+            <p>User details</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">用户管理</a></li>
+            <li class="breadcrumb-item"><a href="#">User Management</a></li>
         </ul>
     </div>
     <div class="tile">
@@ -22,21 +22,21 @@
                 <div class="widget-container fluid-height clearfix">
                     <div class="heading clearfix">
                         <i class="icon-table"></i>
-                        {% if not result.position == '护士'%}
+                        {% if not result.position == 'Nurse'%}
                         <a id="new_user" class="btn btn-sm btn-primary pull-right"
                            href="/redirect_new_user/"><i
-                                class="icon-plus fa fa-plus"></i> 添加员工</a>
+                                class="icon-plus fa fa-plus"></i> Add staff</a>
                         {% endif %}
                     </div>
                     <div class="widget-content padded clearfix">
                         <div class="dataTables_filter">
                             <form class="form-inline">
                                 <div class="btn-group">
-                                    <span>用户名：</span> <input type="text" class="form-control"
+                                    <span>User Name:</span> <input type="text" class="form-control"
                                                              id="emmployeeId" name="emmployeeId" value="">
                                 </div>
                                 <div class="btn-group">
-                                    <input type="button" class="btn btn-success" value="搜索"
+                                    <input type="button" class="btn btn-success" value="Search  "
                                            onclick="show_user_info()"/>
                                 </div>
                             </form>
@@ -47,21 +47,22 @@
                                     <thead>
                                     <tr align="center">
                                         <th nowrap>ID</th>
-                                        <th nowrap>姓名</th>
-                                        <th nowrap>性别</th>
-                                        <th nowrap>职位</th>
-                                        <th nowrap>手机</th>
-                                        <th nowrap>创建时间</th>
-                                        <th nowrap>更新时间</th>
-                                        <th class="action-column" id="operate">操作</th>
+                                        <th nowrap>Name</th>
+                                        <th nowrap>Gender</th>
+                                        <th nowrap>Position</th>
+                                        <th nowrap>Mobile</th>
+                                        <th nowrap>Time created</th>
+                                        <th nowrap>Update time</th>
+
+                                        <th class="action-column" id="operate">Operate</th>
                                     </tr>
                                     </thead>
                                     <tbody align="center">
                                     </tbody>
                                 </table>
-                                <div id="pages"><span id="spanFirst">首页</span> <span id="spanPre">上一页</span> <span
-                                        id="spanNext">下一页</span> <span id="spanLast">尾页</span> 第<strong
-                                        id="spanPageNum"></strong>页/共<strong id="spanTotalPage"></strong>页
+                                <div id="pages"><span id="spanFirst">Home page</span> <span id="spanPre">Last page</span> <span
+                                        id="spanNext">Next page</span> <span id="spanLast">End page</span> The<strong
+                                        id="spanPageNum"></strong>Page/<strong id="spanTotalPage"></strong>Page
                                 </div>
                             </div>
                         </div>
@@ -77,22 +78,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
 
-                        <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+                        <h4 class="modal-title" id="myModalLabel">Modify user information</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" role="form">
                             <div class="form-inline form-group">
-                                <label for="name" class="col-sm-4">姓名: </label>
+                                <label for="name" class="col-sm-4">Name: </label>
                                 <input type="hidden" id="userId" name="userId" type="text"/>
-                                <input id="name" class='form-control col-sm-4' name="name" type="text" title="姓名"
-                                       placeholder="请输入姓名" required="required"/>
-                                <span id="error" style="color: red;display: none" class="col-sm-4">用户名已存在！</span>
+                                <input id="name" class='form-control col-sm-4' name="name" type="text" title="Name"
+                                       placeholder="Please enter your name" required="required"/>
+                                <span id="error" style="color: red;display: none" class="col-sm-4">Username already exists!</span>
                             </div>
 
                             <div class="form-inline form-group">
-                                <label for="gender" class="col-sm-4">性别: </label>
-                                <select id="gender" title="性别" name="gender" class="form-control col-sm-4"
+                                <label for="gender" class="col-sm-4">Gender: </label>
+                                <select id="gender" title="Gender" name="gender" class="form-control col-sm-4"
                                         style="width: 56%">
                                 </select>
                             </div>
@@ -103,29 +104,29 @@
 <!--                                </select>-->
 <!--                            </div>-->
                             <div class="form-inline form-group">
-                                <label for="position2" class="col-sm-4">职位:</label>
+                                <label for="position2" class="col-sm-4">Position</label>
                                 <select id="position2" name="position2" class="form-control col-sm-4"
                                         style="width: 56%"
-                                        title="职位">
+                                        title="Position">
                                 </select>
                             </div>
                             <div class="form-inline form-group">
-                                <label for="phone" class="col-sm-4">手机号:</label>
+                                <label for="phone" class="col-sm-4">Tel:</label>
                                 <input type="tel" class='form-control col-sm-4' id="phone" name="phone"
                                        data-ideal="phone"
-                                       placeholder="请输入手机号" required="required" title="手机号"
-                                       oninvalid="setCustomValidity('请输入您的手机号');" oninput="setCustomValidity('');"/>
+                                       placeholder="Please enter your mobile phone number" required="required" title="Tel number"
+                                       oninvalid="setCustomValidity('Please enter your mobile number');" oninput="setCustomValidity('');"/>
                                 <span id="phone_error" style="color: red;visibility: hidden;"
-                                      class="col-sm-4">手机号格式错误！</span>
+                                      class="col-sm-4">Format wrong</span>
 
                             </div>
                         </form>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
                         </button>
-                        <input type="button" class="btn btn-primary" id="update" value="提交"/>
+                        <input type="button" class="btn btn-primary" id="update" value="Submit"/>
 
 
                         <span id="tip"> </span>
@@ -141,8 +142,8 @@
 {% block script %}
 <script type=text/javascript>
     var user_position = "";
-    var gender_array = ['男','女'];
-    var position_array = ['护士','护士长','管理员'];
+    var gender_array = ['Male','Female'];
+    var position_array = ['Nurse','Nurse manager','Administrator'];
     function modeify_user_info(userId) {
         document.getElementById('error').style.display = 'none';
         $.ajax({
@@ -245,13 +246,13 @@
             table_value += info[i].phone + "</td><td>";
             table_value += info[i].create_time + "</td><td>";
             table_value += info[i].last_modify_time + "</td><td>";
-            if ('{{result.position}}' =='护士') {
-                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + user_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "没有权限" + "</a>";
+            if ('{{result.position}}' =='Nurse') {
+                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + user_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "No permission" + "</a>";
 
             }
                 else{
-                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + user_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)'>" + "修改信息" + "</a>";
-                table_value += "<button class='btn btn-danger' id=" + "'" + user_id + "'" + "name='delete' onclick='delete_user_info(this.id)'>删除</button></td>";
+                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + user_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)'>" + "Modify information" + "</a>";
+                table_value += "<button class='btn btn-danger' id=" + "'" + user_id + "'" + "name='delete' onclick='delete_user_info(this.id)'>Delete</button></td>";
             }
             table_value += "</tr>";
         }
@@ -300,38 +301,38 @@
 
     //上一页链接
     function preLink() {
-        spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>";
+        spanPre.innerHTML = "<a href='javascript:pre();'>Last page</a>";
     }
 
     function preText() {
-        spanPre.innerHTML = "上一页";
+        spanPre.innerHTML = "Last page";
     }
 
     //下一页链接
     function nextLink() {
-        spanNext.innerHTML = "<a href='javascript:next_page();'>下一页</a>";
+        spanNext.innerHTML = "<a href='javascript:next_page();'>Next page</a>";
     }
 
     function nextText() {
-        spanNext.innerHTML = "下一页";
+        spanNext.innerHTML = "Next page";
     }
 
     //首页链接
     function firstLink() {
-        spanFirst.innerHTML = "<a href='javascript:first_page();'>首页</a>";
+        spanFirst.innerHTML = "<a href='javascript:first_page();'>Home page</a>";
     }
 
     function firstText() {
-        spanFirst.innerHTML = "首页";
+        spanFirst.innerHTML = "Home page";
     }
 
     //尾页链接
     function lastLink() {
-        spanLast.innerHTML = "<a href='javascript:last_page();'>末页</a>";
+        spanLast.innerHTML = "<a href='javascript:last_page();'>End page</a>";
     }
 
     function lastText() {
-        spanLast.innerHTML = "末页";
+        spanLast.innerHTML = "End page";
     }
 
     //上一页
@@ -367,12 +368,12 @@
     //删除用户
     function delete_user_info(user_id) {
         swal({
-            title: "确定删除么?",
-            text: "你将无法恢复这个用户！",
+            title: "Are you sure you want to delete it?",
+            text: "You will not be able to recover this user!",
             type: "warning",
             showCancelButton: true,
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
+            confirmButtonText: "CONFIRM",
+            cancelButtonText: "CANCEL",
             closeOnConfirm: false,
             closeOnCancel: false
         }, function (isConfirm) {
@@ -384,15 +385,15 @@
                     data: {'user_id': user_id},
                     success: function (data) {
                         window.location.href = '/user';
-                        swal("已删除!", "用户已被删除", "success");
+                        swal("Deleted!" , "User deleted", "success");
                     },
                     error: function (xhr) {
-                        swal("删除失败!", "用户未被删除", "error");
+                        swal("Deletion failed!" , "The user has not been deleted", "error");
                     }
                 });
 
             } else {
-                swal("已取消", "删除操作已取消 :)", "error");
+                swal("Cancelled", "Deletion cancelled :)", "error");
             }
         });
 
@@ -422,10 +423,10 @@
                         for (var i = 1; i < table_rows.length; i++) {
                             table_rows[i].style.display = 'none';
                         }
-                        spanPre.innerHTML = "上一页";
-                        spanFirst.innerHTML = "首页";
-                        spanNext.innerHTML = "下一页";
-                        spanLast.innerHTML = "末页";
+                        spanPre.innerHTML = "Last page";
+                        spanFirst.innerHTML = "Home page";
+                        spanNext.innerHTML = "Next page";
+                        spanLast.innerHTML = "End page";
                         pageNum.innerHTML = 0;
                         totalPage.innerHTML = 0;
                     }

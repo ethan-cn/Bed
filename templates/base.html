@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="description"
-          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <!-- Twitter meta-->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@pratikborsadiya">
-    <meta property="twitter:creator" content="@pratikborsadiya">
-    <!-- Open Graph Meta-->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Vali Admin">
-    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
-    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
-    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-    <meta property="og:description"
-          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>住院床位管理系统</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bed management system</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
@@ -34,13 +20,14 @@
 
 <!-- Navbar-->
 <header class="app-header">
-    <a class="app-header__logo" style="font-size: 22px" href="">住院床位管理系统</a>
+    <a class="app-header__logo" style="font-size: 22px" href="">Heal system</a>
     <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
                                     aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
     <ul class="app-nav">
         <li class="app-search" style="color: white;font-size: 16px;margin-left: 16px">
-            <span style="">当前时间 :  &nbsp&nbsp</span><div id="time" ></div>
+            <span style="">Time :  &nbsp&nbsp</span>
+            <div id="time"></div>
         </li>
 
         <!-- User Menu-->
@@ -48,9 +35,9 @@
                 class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i><span
-                        id="user">当前用户：{{ result.username }}</span></a></li>
+                        id="user">User：{{ result.username }}</span></a></li>
                 <li><a class="dropdown-item" href="/login_out/"><i class="fa fa-sign-out fa-lg"></i>
-                    注销</a></li>
+                    Log out</a></li>
             </ul>
         </li>
     </ul>
@@ -59,7 +46,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
-                                        src="../static/images/touxiang.jpg" width="80px"
+                                        src="../static/images/touxiang.jpg" width="100px"
                                         alt="User Image">
         <div>
             <p class="app-sidebar__user-name" id="username">{{ result.username }}</p>
@@ -68,34 +55,20 @@
     </div>
     <ul class="app-menu">
         <li class="treeview"><a class="app-menu__item" id="one" href="/index/"><i
-                class="app-menu__icon fa fa-home"></i><span class="app-menu__label"><span>首</span><span
-                style="margin-left: 30px">页</span></span></a></li>
+                class="app-menu__icon fa fa-home"></i><span class="app-menu__label"><span>Home page</span><span
+                style="margin-left: 30px"></span></span></a></li>
 
         <li class="treeview"><a class="app-menu__item " id="dataset" href="/redirect_patient/"><i
-                class="app-menu__icon fa fa-table"></i><span class="app-menu__label">入院管理</span></a></li>
+                class="app-menu__icon fa fa-table"></i><span class="app-menu__label">Patient management</span></a></li>
         <li class="treeview"><a class="app-menu__item " id="model" href="/redirect_bed/"><i
-                class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">床位管理</span></a></li>
+                class="app-menu__icon fa fa-th-large"></i><span class="app-menu__label">Bed management</span></a></li>
         <li class="treeview"><a class="app-menu__item " id="work" href="/redirect_department/"><i
-                class="app-menu__icon fa fa-recycle "></i><span class="app-menu__label">科室管理</span></a></li>
-<!--        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i-->
-<!--                class="app-menu__icon  fa fa-laptop"></i><span class="app-menu__label">权限管理</span><i-->
-<!--                class="treeview-indicator fa fa-angle-right"></i></a>-->
-<!--            <ul class="treeview-menu">-->
-<!--                <li><a class="treeview-item" href=""><i-->
-<!--                        class="icon fa fa-circle-o"></i>项目管理</a></li>-->
-<!--                <li><a class="treeview-item" href=""><i-->
-<!--                        class="icon fa fa-circle-o"></i>我的任务</a></li>-->
-<!--                 <li><a class="treeview-item" href=""><i-->
-<!--                     class="icon fa fa-circle-o"></i> 数据核验</a></li>-->
-
-<!--            </ul>-->
-<!--        </li>-->
-
-             <li class="treeview"><a class="app-menu__item " id="user1" href="/user/"><i
-                class="app-menu__icon fa fa-user fa-lg"></i><span class="app-menu__label">用户管理</span></a></li>
+                class="app-menu__icon fa fa-recycle "></i><span class="app-menu__label">Department</span></a></li>
+        <li class="treeview"><a class="app-menu__item " id="user1" href="/user/"><i
+                class="app-menu__icon fa fa-user fa-lg"></i><span class="app-menu__label">User management</span></a></li>
     </ul>
-    
-</iframe>
+
+    </iframe>
 
 </aside>
 {% block content %}
@@ -131,14 +104,17 @@
 </script>
 <script>
 
-      function mytime(){
+    function mytime() {
         var a = new Date();
         var b = a.toLocaleTimeString();
         var c = a.toLocaleDateString();
-        document.getElementById("time").innerHTML = c+"&nbsp"+b;
-        }
+        document.getElementById("time").innerHTML = c + "&nbsp" + b;
+    }
+
+    mytime()
+    setInterval(function () {
         mytime()
-    setInterval(function() {mytime()},1000);
+    }, 1000);
     $(function () {
         $('.app-menu__item').click(function () {
             $(this).addClass('active')

@@ -105,7 +105,7 @@ def query_department(req):
                 'doctor_name': result.doctor_name,
             }
     else:
-        response_data = {'error': '获取科室信息失败！', 'message': '找不到科室信息'}
+        response_data = {'error': 'Failed to get section information!' , 'message': 'Section information not found'}
         return JsonResponse(response_data, status=403)
     response_data['department'] = list(sorted(dict_values.values(), key=lambda item: item['id']))
     response_data["total"] = total
@@ -126,11 +126,11 @@ def query_patient(req):
     if results:
         for result in results:
             if result.gender == 0:
-                sex = '男'
+                sex = 'Male'
             else:
-                sex = '女'
+                sex = 'Female'
             if not result.patient_bed_id_id:
-                bed_name = '已出院'
+                bed_name = 'Discharge'
             else:
                 bed_info = Bed.objects.filter(bed_id=result.patient_bed_id_id).first()
                 bed_name = bed_info.bed_name
@@ -146,7 +146,7 @@ def query_patient(req):
                 'modified': result.modified.strftime('%Y-%m-%d %H:%M')
             }
     else:
-        response_data = {'error': '获取入住病人信息失败！', 'message': '找不到病人信息'}
+        response_data = {'error': 'Failed to get patient information for admission!' , 'message': 'Patient information not found'}
         return JsonResponse(response_data, status=403)
     response_data['patient'] = list(sorted(dict_values.values(), key=lambda item: item['id']))
     response_data["total"] = total
@@ -175,7 +175,7 @@ def get_department_by_name(request):
 
             }
     else:
-        response_data = {'error': '获取用户信息失败！', 'message': '找不到用户信息.'}
+        response_data = {'error': 'Failed to get user information!' , 'message': 'User information not found.'}
         return JsonResponse(response_data, status=403)
     response_data['department'] = list(dict_values.values())
     response_data["total"] = total
@@ -191,7 +191,7 @@ def add_patient(request):
     """
     name = request.POST.get('name')
     gender = request.POST.get('gender')
-    if gender == '男':
+    if gender == 'Male':
         gender = 0
     else:
         gender = 1
@@ -208,7 +208,7 @@ def add_patient(request):
             bed_id = bed.bed_id
             bed_ids.append(bed_id)
     if len(bed_ids) <= 0:
-        return JsonResponse({'message': '当前价格的床位空缺，请重新选择其他价格的床位'}, status=401)
+        return JsonResponse({'message': 'Beds at the current price are vacant, please re-select a bed at another price'}, status=401)
     bed_id = bed_ids[0]
     Bed.objects.filter(bed_id=bed_id).update(status=1)
     Patient.objects.create(
@@ -265,19 +265,19 @@ def modify_patient(request):
                 bed_id = bed.bed_id
                 bed_ids.append(bed_id)
         if len(bed_ids) <= 0:
-            response_data['message'] = '当前价位床位已无空余，请选择其他价位的床位！'
+            response_data['message'] = 'There are no more beds available at the current price, please choose a bed at another price!'
             return JsonResponse(response_data, status=401)
         bed_id = bed_ids[0]
         Bed.objects.filter(bed_id=bed_id).update(status=1)
         Bed.objects.filter(bed_name=bed_name).update(status=0)
         Patient.objects.filter(patient_id=patient_id).update(
             patient_bed_id_id=bed_id)
-        response_data['message'] = '修改成功'
+        response_data['message'] = 'Modified successfully'
         return JsonResponse(response_data, status=201)
     except Exception as e:
         print(e)
         print(traceback.print_exc())
-        response_data['message'] = '修改失败'
+        response_data['message'] = 'Modification failed'
         return JsonResponse(response_data, status=401)
 
 
@@ -297,11 +297,11 @@ def modify_department(request):
             doctor_name=doctor_name,
             name=name,
             addr=addr)
-        response_data['message'] = '修改成功'
+        response_data['message'] = 'Modified successfully'
         return JsonResponse(response_data, status=201)
     except Exception as e:
         print(e)
-        response_data['message'] = '修改失败'
+        response_data['message'] = 'Modification failed'
         return JsonResponse(response_data, status=401)
 
 
@@ -325,7 +325,7 @@ def get_patient_by_id(request):
             dict_value['bed_name'] = bed_name
             dict_value['name'] = result.name
     else:
-        response_data = {'error': '获取用户信息失败！', 'message': '找不到用户信息.'}
+        response_data = {'error': 'Failed to get user information!' , 'message': 'User information not found.'}
         return JsonResponse(response_data, status=403)
     response_data['patient'] = dict_value
     return JsonResponse(response_data)
@@ -345,7 +345,7 @@ def get_department_by_id(request):
             dict_value['doctor_name'] = result.doctor_name
             dict_value['addr'] = result.addr
     else:
-        response_data = {'error': '获取科室信息失败！', 'message': '找不到科室信息.'}
+        response_data = {'error': 'Failed to get department information!' , 'message': 'Department information not found.'}
         return JsonResponse(response_data, status=403)
     response_data['department'] = dict_value
     return JsonResponse(response_data)
@@ -368,11 +368,11 @@ def delete_patient(request):
         patients.update(
             patient_bed_id_id='',
             modified=modify_time)
-        response_data['message'] = '修改成功'
+        response_data['message'] = 'Modified successfully'
         return JsonResponse(response_data, status=201)
     except Exception as e:
         print(e)
-        response_data['message'] = '修改失败'
+        response_data['message'] = 'Modification failed'
         return JsonResponse(response_data, status=401)
 
 
@@ -387,13 +387,14 @@ def delete_department(request):
     result = Department.objects.filter(department_id=department_id).first()
     try:
         if not result:
-            response_data = {'error': '删除科室失败！', 'message': '找不到id为%s的科室' % department_id}
+            response_data = {'error': 'Failed to delete section!' , 'message': 'The section with id %s could not be '
+                                                                               'found' % department_id}
             return JsonResponse(response_data, status=403)
         result.delete()
-        response_data = {'message': '删除成功！'}
+        response_data = {'message': 'Deletion successful!'}
         return JsonResponse(response_data, status=201)
     except Exception as e:
-        response_data = {'message': '删除失败！'}
+        response_data = {'message': 'Delete failed!'}
         return JsonResponse(response_data, status=403)
 
 
@@ -412,11 +413,11 @@ def get_patient_by_name(request):
     if results:
         for result in results:
             if result.gender == 0:
-                sex = '男'
+                sex = 'Male'
             else:
-                sex = '女'
+                sex = 'Female'
             if not result.patient_bed_id_id:
-                bed_name = '已出院'
+                bed_name = 'Discharged'
             else:
                 bed_info = Bed.objects.filter(bed_id=result.patient_bed_id_id).first()
                 bed_name = bed_info.bed_name
@@ -432,7 +433,7 @@ def get_patient_by_name(request):
                 'modified': result.modified.strftime('%Y-%m-%d %H:%M')
             }
     else:
-        response_data = {'error': '获取用户信息失败！', 'message': '找不到用户信息.'}
+        response_data = {'error': 'Failed to get user information!' , 'message': 'User information not found.'}
         return JsonResponse(response_data, status=403)
     response_data['patient'] = list(dict_values.values())
     response_data["total"] = total

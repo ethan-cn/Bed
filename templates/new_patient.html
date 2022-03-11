@@ -35,12 +35,12 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-file-code-o"></i> 入院登记</h1>
-            <p>登记信息</p>
+            <h1><i class="fa fa-file-code-o"></i> Patient Registration</h1>
+            <p>Registration information</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">入院登记</a></li>
+            <li class="breadcrumb-item"><a href="#">Patient Registration</a></li>
         </ul>
     </div>
     <div class="widget-content padded clearfix" style="background-color: #FFF">
@@ -49,24 +49,24 @@
                  style="margin: 20px auto;font-size: 16px">
                 <form class="" id="my-form" method="post" action="/add_patient/">
                     <div class=" form-inline form-group input-group">
-                        <label for="name" class="col-sm-5">姓名: </label>
+                        <label for="name" class="col-sm-5">Name:</label>
                         <input autocomplete="off" id="name" class='form-control col-sm-7' name="name" type="text"
-                               placeholder="请输入姓名" required="required"/>
+                               placeholder="Please enter the name" required="required"/>
                     </div>
                     <div class="form-inline form-group">
-                        <label for="age" class="col-sm-5">年龄: </label>
+                        <label for="age" class="col-sm-5">Age: </label>
                         <input autocomplete="off" id="age" class='form-control col-sm-7' name="age" type="text"
-                               placeholder="请输入年龄" required="required"/>
+                               placeholder="Please enter the age" required="required"/>
                     </div>
                     <div class="form-inline form-group">
-                        <label for="gender" class="col-sm-5">性别: </label>
+                        <label for="gender" class="col-sm-5">Gender:</label>
                         <select id="gender" name="gender" class="form-control col-sm-7" style="width: 56%">
-                            <option>男</option>
-                            <option>女</option>
+                            <option>Male</option>
+                            <option>Female</option>
                         </select>
                     </div>
                     <div class="form-inline form-group">
-                        <label for="department" class="col-sm-5">科室: </label>
+                        <label for="department" class="col-sm-5">Department:</label>
                         <select id="department" name="department" class="form-control col-sm-7" style="width: 56%">
                             {% for i in result.department%}
                             <option>{{i}}</option>
@@ -74,23 +74,23 @@
                         </select>
                     </div>
                     <div class="form-inline form-group">
-                        <label autocomplete="off" for="price" class="col-sm-5">床位价格: </label>
+                        <label autocomplete="off" for="price" class="col-sm-5">Bed price:</label>
                         <select id="price" name="price" class="form-control col-sm-7" style="width: 56%">
-                             {% for i in result.prices %}
-                            <option>{{i}}元</option>
+                             {% for i in result.prices%}
+                            <option>{{i}}</option>
                          {% endfor %}
                         </select>
                     </div>
                     <div class="form-inline form-group">
-                        <label autocomplete="off" for="description" class="col-sm-5">病情描述: </label>
+                        <label autocomplete="off" for="description" class="col-sm-5">Description of the disease </label>
                         <input type="tex" class='form-control col-sm-7' id="description" name="description"
-                               data-ideal="phone" placeholder="请输入病情描述" required="required"/>
+                               data-ideal="phone" placeholder="Please enter a description of your condition" required="required"/>
                     </div>
                     <div style="text-align: center;margin-left: -120px">
                         <input id="user_info_button" type="submit" class="btn btn-info" style="margin-left: 50px"
-                               value="提交"/>
+                               value="Submit"/>
                         <input type="button" class="btn btn-info" onclick="javascript:history.go(-1);"
-                               style="margin-left: 10px" value="取消"/>
+                               style="margin-left: 10px" value="Cancel"/>
                     </div>
                 </form>
             </div>
@@ -111,32 +111,6 @@
             $(this).parent("label").removeClass("active");
         }
     })
-
-    // $(function () {
-    //      $("#name").blur(function () {
-    //      var user_name = $("#name").val();
-    //      if (user_name){
-    //           $.ajax({
-    //               type:"get",
-    //               dataType:"json",
-    //               url:"/user/judge/" + user_name + "/0/",
-    //               data:{"user_name":user_name},
-    //               success:function (data) {
-    //                   var message = data.message;
-    //                   if(message == "1") {
-    //                       document.getElementById('error').style.visibility = 'visible';
-    //                       $("#user_info_button").prop('disabled',true);
-    //                   }else {
-    //                       document.getElementById('error').style.visibility = 'hidden';
-    //                       $("#user_info_button").prop('disabled',false);
-    //                   }
-    //               },
-    //           });
-    //         }
-    //     })
-    // });
-
-
 </script>
 {% endblock %}
 </body>

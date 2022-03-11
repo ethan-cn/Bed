@@ -16,15 +16,11 @@ form button{
     cursor:pointer;
 }
 .div-bor{
-
 position: relative;width: 200px;
-
 }
-
 .active:after {
 	width:calc(100% - 2px)
 }
-
 </style>
     {% endblock %}
 </head>
@@ -33,12 +29,12 @@ position: relative;width: 200px;
     <main class="app-content">
         <div class="app-title">
             <div>
-                <h1><i class="fa fa-file-code-o"></i> 添加用户</h1>
-                <p>用户信息</p>
+                <h1><i class="fa fa-file-code-o"></i> Add new user</h1>
+                <p>User's information</p>
             </div>
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-                <li class="breadcrumb-item"><a href="show.html">用户管理</a></li>
+                <li class="breadcrumb-item"><a href="show.html">User management</a></li>
             </ul>
         </div>
       <div class="widget-content padded clearfix" style="background-color: #FFF">
@@ -46,41 +42,41 @@ position: relative;width: 200px;
               <div class="widget-content padded clearfix" style="margin:0 auto;margin-top: 20px;margin-bottom: 20px;font-size: 16px">
                   <form class="" id="my-form" method="post"  action="/add_user/" >
                       <div  class=" form-inline form-group input-group"  >
-                          <label  for="name" class="col-sm-3" >姓名: </label>
-                          <input autocomplete="off" id="name" class='form-control col-sm-5' name="name" type="text" placeholder="请输入姓名"  required="required"/>
-                           <span id="error" style="color: red;visibility: hidden;font-size: 10px" class="col-sm-4">用户名已存在！</span>
+                          <label  for="name" class="col-sm-3" >Name:</label>
+                          <input autocomplete="off" id="name" class='form-control col-sm-5' name="name" type="text" placeholder="Please enter the name:"  required="required"/>
+                           <span id="error" style="color: red;visibility: hidden;font-size: 10px" class="col-sm-4">The username already exists!</span>
                       </div>
                       <div  class="form-inline form-group">
-                          <label  for="password" class="col-sm-3">密码: </label>
-                          <input autocomplete="off" id="password" class='form-control col-sm-5' name="password" type="password"  placeholder="请输入密码" required="required"/>
+                          <label  for="password" class="col-sm-3">Password:</label>
+                          <input autocomplete="off" id="password" class='form-control col-sm-5' name="password" type="password"  placeholder="Please enter the password:" required="required"/>
                       </div>
                       <div  class="form-inline form-group">
-                          <label  for="gender" class="col-sm-3">性别: </label>
+                          <label  for="gender" class="col-sm-3">Gender:</label>
                           <select id = "gender" name="gender" class="form-control col-sm-5" style="width: 56%">
-                              <option>男</option>
-                              <option>女</option>
+                              <option>Male</option>
+                              <option>Female</option>
                           </select>
                       </div>
                       <div  class="form-inline form-group">
-                          <label  for="position" class="col-sm-3">职位: </label>
+                          <label  for="position" class="col-sm-3">Job position:</label>
                           <select id = "position" name="position" class="form-control col-sm-5" style="width: 56%">
-                              <option>医生</option>
-                              <option>护士</option>
-                              <option>护士长</option>
-                              <option>管理员</option>
+                              <option>Doctor</option>
+                              <option>Nurse</option>
+                              <option>Nurse Manager</option>
+                              <option>Administrator</option>
                           </select>
                       </div>
                       <div  class="form-inline form-group">
-                          <label autocomplete="off" for="tel" class="col-sm-3">手机: </label>
-                          <input type="tel" class='form-control col-sm-5'id="tel" name="phone" data-ideal="phone"  placeholder="请输入手机号" required="required"/>
+                          <label autocomplete="off" for="tel" class="col-sm-3">Tel:</label>
+                          <input type="tel" class='form-control col-sm-5'id="tel" name="phone" data-ideal="phone"  placeholder="Please enter mobile number" required="required"/>
                       </div>
                         <div  class="form-inline form-group">
-                          <label autocomplete="off" for="description" class="col-sm-3">描述: </label>
-                          <input type="text" class='form-control col-sm-5'id="description" name="description" data-ideal="phone"  placeholder="请输入手机号" required="required"/>
+                          <label autocomplete="off" for="description" class="col-sm-3">Description:</label>
+                          <input type="text" class='form-control col-sm-5'id="description" name="description" data-ideal="phone"  placeholder="Please describe briefly" required="required"/>
                       </div>
                       <div style="text-align: center;margin-left: -120px">
-                          <input  id="user_info_button" type="submit" class="btn btn-info" style="margin-left: 50px" value="提交" />
-                          <input  type="button"  class="btn btn-info"  onclick="javascript:history.go(-1);" style="margin-left: 10px" value="取消"/>
+                          <input  id="user_info_button" type="submit" class="btn btn-info" style="margin-left: 50px" value="Submit" />
+                          <input  type="button"  class="btn btn-info"  onclick="javascript:history.go(-1);" style="margin-left: 10px" value="Cancel"/>
                       </div>
                   </form>
               </div>

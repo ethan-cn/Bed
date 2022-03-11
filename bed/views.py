@@ -50,11 +50,11 @@ def query_bed(request):
             if patient_info:
                 patient_name = patient_info.name
             else:
-                patient_name = '无'
+                patient_name = 'None'
             if result.status == 0:
-                status = '空床'
+                status = 'Empty'
             else:
-                status = '已入住'
+                status = 'Occupied'
             dict_values[result.bed_id] = {
                 'id': result.bed_id,
                 'name': result.bed_name,
@@ -63,7 +63,7 @@ def query_bed(request):
                 'patient_name': patient_name,
             }
     else:
-        response_data = {'error': '获取床位信息失败！', 'message': '找不到床位信息'}
+        response_data = {'error': 'Failed to get bed information!', 'message': 'Bed information not found'}
         return JsonResponse(response_data, status=403)
     response_data['bed'] = list(sorted(dict_values.values(), key=lambda item: item['id']))
     response_data["total"] = total
@@ -112,13 +112,13 @@ def delete_bed(request):
     result = Bed.objects.filter(bed_id=bed_id).first()
     try:
         if not result:
-            response_data = {'error': '删除床位失败！', 'message': '找不到id为%s的床位' % bed_id}
+            response_data = {'error': 'Deleting a bed failed!', 'message': 'Can''t find bed with id %s' % bed_id}
             return JsonResponse(response_data, status=403)
         result.delete()
-        response_data = {'message': '删除成功！'}
+        response_data = {'message': 'Deleted successfully!'}
         return JsonResponse(response_data, status=201)
     except Exception as e:
-        response_data = {'message': '删除失败！'}
+        response_data = {'message': 'Delete failed!'}
         return JsonResponse(response_data, status=403)
 
 
@@ -138,11 +138,11 @@ def modify_bed(request):
             bed_name=name,
             price=price,
         )
-        response_data['message'] = '修改成功'
+        response_data['message'] = 'Modified successfully'
         return JsonResponse(response_data, status=201)
     except Exception as e:
         print(e)
-        response_data['message'] = '修改失败'
+        response_data['message'] = 'Modification failed'
         return JsonResponse(response_data, status=401)
 
 
@@ -163,7 +163,7 @@ def get_bed_by_id(request):
                 'price': result.price,
             }
     else:
-        response_data = {'error': '获取床位信息失败！', 'message': '找不到用户信息.'}
+        response_data = {'error': 'Failed to get bed information!', 'message': 'User information not found.'}
         return JsonResponse(response_data, status=403)
     response_data['bed'] = dict_value
     return JsonResponse(response_data)
@@ -184,11 +184,11 @@ def get_bed_by_name(request):
                 if patient_info:
                     patient_name = patient_info.name
                 else:
-                    patient_name = '无'
+                    patient_name = 'None'
                 if result.status == 0:
-                    status = '空床'
+                    status = 'Empty'
                 else:
-                    status = '已入住'
+                    status = 'Occupied'
                 dict_values[result.bed_id] = {
                     'id': result.bed_id,
                     'name': result.bed_name,
@@ -197,12 +197,12 @@ def get_bed_by_name(request):
                     'patient_name': patient_name,
                 }
         else:
-            response_data = {'error': '获取床位信息失败！', 'message': '找不到床位信息.'}
+            response_data = {'error': 'Failed to get bed information!', 'message': 'No bed information found.'}
             return JsonResponse(response_data, status=403)
         response_data['bed'] = list(dict_values.values())
         response_data["total"] = total
     except Exception as e:
         print(e)
-        response_data = {'error': '获取成为信息失败！', 'message': '找不到床位信息.'}
+        response_data = {'error': 'Failed to get bed information!', 'message': 'No bed information found.'}
 
     return JsonResponse(response_data)

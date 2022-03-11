@@ -8,12 +8,12 @@
     <main class="app-content">
         <div class="app-title">
             <div>
-                <h1><i class="fa fa-file-code-o"></i> 科室管理</h1>
-                <p>科室详细信息</p>
+                <h1><i class="fa fa-file-code-o"></i> Department management</h1>
+                <p>Department Details</p>
             </div>
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-                <li class="breadcrumb-item"><a href="#">科室管理</a></li>
+                <li class="breadcrumb-item"><a href="#">Departmental Management</a></li>
             </ul>
         </div>
         <div class="tile">
@@ -21,23 +21,23 @@
                 <div class="container-fluid main-content">
                     <div class="widget-container fluid-height clearfix">
                          <div class="heading clearfix">
-                              {% if not result.position == '护士'%}
+                              {% if not result.position == 'Nurse'%}
                             <i class="icon-table"></i>
 
                                 <a id="new_user" class="btn btn-sm btn-primary pull-right"
                                    href="/redirect_new_department/"><i
-                                        class="icon-plus fa fa-plus"></i> 新增科室</a>
+                                        class="icon-plus fa fa-plus"></i> New department</a>
                                 {% endif %}
                         </div>
                         <div class="widget-content padded clearfix">
                             <div class="dataTables_filter">
                                 <form class="form-inline">
                                     <div class="btn-group">
-                                        <span>科室名称：</span> <input type="text" class="form-control"
+                                        <span>Department name:</span> <input type="text" class="form-control"
                                                                  id="emmployeeId" name="emmployeeId" value="">
                                     </div>
                                     <div class="btn-group">
-                                        <input type="button" class="btn btn-success" value="搜索"
+                                        <input type="button" class="btn btn-success" value="Search"
                                                onclick="show_user_info()"/>
                                     </div>
                                 </form>
@@ -48,19 +48,19 @@
                                         <thead>
                                         <tr align="center">
                                             <th nowrap>ID</th>
-                                            <th nowrap>科室名称</th>
-                                            <th nowrap>主治医生</th>
-                                            <th nowrap>科室所在楼层</th>
-                                            <th nowrap>操作</th>
+                                            <th nowrap>Department name</th>
+                                            <th nowrap>Doctor</th>
+                                            <th nowrap>Floor</th>
+                                            <th nowrap>Operate</th>
                                         </tr>
                                         </thead>
                                         <tbody align="center">
 
                                         </tbody>
                                     </table>
-                                    <div id="pages"><span id="spanFirst">首页</span> <span id="spanPre">上一页</span> <span
-                                            id="spanNext">下一页</span> <span id="spanLast">尾页</span> 第<strong
-                                            id="spanPageNum"></strong>页/共<strong id="spanTotalPage"></strong>页
+                                    <div id="pages"><span id="spanFirst">Home page</span> <span id="spanPre">Last page</span> <span
+                                            id="spanNext">Next page</span> <span id="spanLast">End page</span> The<strong
+                                            id="spanPageNum"></strong>Page/<strong id="spanTotalPage"></strong>Page
                                     </div>
                                 </div>
                             </div>
@@ -76,35 +76,35 @@
                     <div class="modal-content">
                         <div class="modal-header">
 
-                            <h4 class="modal-title" id="myModalLabel">修改科室信息</h4>
+                            <h4 class="modal-title" id="myModalLabel">Modify department information</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-inline form-group">
-                                    <label for="name" class="col-sm-4">科室名称: </label>
+                                    <label for="name" class="col-sm-4">Department name: </label>
                                     <input type="hidden" id="userId" name="userId" type="text"/>
-                                    <input id="name" class='form-control col-sm-4' name="name" type="text" title="姓名"
-                                           placeholder="请输入科室名称" required="required"/>
-                                    <span id="error" style="color: red;display: none" class="col-sm-4">科室名已存在！</span>
+                                    <input id="name" class='form-control col-sm-4' name="name" type="text" title="Name"
+                                           placeholder="Please enter the name of the department" required="required"/>
+                                    <span id="error" style="color: red;display: none" class="col-sm-4">Department name already exists!</span>
                                 </div>
                                 <div class="form-inline form-group">
-                                    <label for="doctor_name" class="col-sm-4">所属医生: </label>
-                                    <input id="doctor_name" class='form-control col-sm-4' name="doctor_name" type="text" title="所属医生"
-                                           placeholder="请输入所属医生" required="required"/>
+                                    <label for="doctor_name" class="col-sm-4">Affiliated doctors: </label>
+                                    <input id="doctor_name" class='form-control col-sm-4' name="doctor_name" type="text" title="Affiliated doctors"
+                                           placeholder="Please enter  doctor" required="required"/>
                                 </div>
                                 <div class="form-inline formgroup">
-                                    <label for="addr" class="col-sm-4">所在楼层:</label>
-                                    <input id="addr" class='form-control col-sm-4' name="addr" type="text" title="所在楼层"
-                                           placeholder="请输入所在楼层" required="required"/>
+                                    <label for="addr" class="col-sm-4">Floor:</label>
+                                    <input id="addr" class='form-control col-sm-4' name="addr" type="text" title="Floor:"
+                                           placeholder="Please enter floor" required="required"/>
                                 </div>
                             </form>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
                             </button>
-                            <input type="button" class="btn btn-primary" id="update" value="提交"/>
+                            <input type="button" class="btn btn-primary" id="update" value="Submit"/>
 
 
                             <span id="tip"> </span>
@@ -194,14 +194,14 @@
                 table_value += department_id + "</td><td>";
                 table_value += info[i].name + "</td><td>";
                 table_value += info[i].doctor_name + "</td><td>";
-                table_value += info[i].addr + "/12层</td><td>";
-                if ('{{result.position}}' =='护士') {
-                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + department_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "没有权限" + "</a>";
+                table_value += info[i].addr + "/12Floor</td><td>";
+                if ('{{result.position}}' =='Nurse') {
+                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + department_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "No access" + "</a>";
 
             }
                 else{
-                    table_value += "<a class='btn btn-info' data-toggle='modal' id =" + department_id + " data-target='#modifyUserInfo' onclick='modeify_department_info(this.id)'>" + "修改" + "</a>";
-                    table_value += "<button class='btn btn-danger' id=" + "'" + department_id + "'" + "name='delete' onclick='delete_user_info(this.id)'> 删除</button></td>";
+                    table_value += "<a class='btn btn-info' data-toggle='modal' id =" + department_id + " data-target='#modifyUserInfo' onclick='modeify_department_info(this.id)'>" + "Edit" + "</a>";
+                    table_value += "<button class='btn btn-danger' id=" + "'" + department_id + "'" + "name='delete' onclick='delete_user_info(this.id)'> Delete</button></td>";
                 }
                 table_value += "</tr>";
             }
@@ -250,38 +250,38 @@
 
         //上一页链接
         function preLink() {
-            spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>";
+            spanPre.innerHTML = "<a href='javascript:pre();'>Last page</a>";
         }
 
         function preText() {
-            spanPre.innerHTML = "上一页";
+            spanPre.innerHTML = "Last page";
         }
 
         //下一页链接
         function nextLink() {
-            spanNext.innerHTML = "<a href='javascript:next_page();'>下一页</a>";
+            spanNext.innerHTML = "<a href='javascript:next_page();'>Next page</a>";
         }
 
         function nextText() {
-            spanNext.innerHTML = "下一页";
+            spanNext.innerHTML = "Next page";
         }
 
         //首页链接
         function firstLink() {
-            spanFirst.innerHTML = "<a href='javascript:first_page();'>首页</a>";
+            spanFirst.innerHTML = "<a href='javascript:first_page();'>Home page</a>";
         }
 
         function firstText() {
-            spanFirst.innerHTML = "首页";
+            spanFirst.innerHTML = "Home page";
         }
 
         //尾页链接
         function lastLink() {
-            spanLast.innerHTML = "<a href='javascript:last_page();'>末页</a>";
+            spanLast.innerHTML = "<a href='javascript:last_page();'>End page</a>";
         }
 
         function lastText() {
-            spanLast.innerHTML = "末页";
+            spanLast.innerHTML = "End page";
         }
 
         //上一页
@@ -315,12 +315,12 @@
   //删除用户
         function delete_user_info(department_id) {
             swal({
-                title: "确定删除么?",
-                text: "你将无法恢复这个科室！",
+                title: "Are you sure you want to delete it?",
+                text: "You will not be able to recover this section!",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
+                confirmButtonText: "CONFIRM",
+                cancelButtonText: "CANCEL",
                 closeOnConfirm: false,
                 closeOnCancel: false
             }, function (isConfirm) {
@@ -331,16 +331,16 @@
                         url: "/delete_department/",
                         data:{'department_id':department_id},
                         success: function (data) {
-                            swal("已删除!", "科室已被删除", "success");
+                            swal("Deleted!" , "Section removed", "success");
                             window.location.href = '/redirect_department/';
                         },
                         error:function (xhr) {
-                            swal("删除失败!", "科室未被删除", "error");
+                            swal("Deletion failed!" , "Section not deleted", "error");
                         }
                     });
 
                 } else {
-                    swal("已取消", "删除操作已取消 :)", "error");
+                    swal("Cancelled", "The delete operation has been cancelled :)", "error");
                 }
             });
 
@@ -368,10 +368,10 @@
                             for (var i = 1; i < table_rows.length; i++) {
                                 table_rows[i].style.display = 'none';
                             }
-                            spanPre.innerHTML = "上一页";
-                            spanFirst.innerHTML = "首页";
-                            spanNext.innerHTML = "下一页";
-                            spanLast.innerHTML = "末页";
+                            spanPre.innerHTML = "Last page";
+                            spanFirst.innerHTML = "Home page";
+                            spanNext.innerHTML = "Next page";
+                            spanLast.innerHTML = "End page";
                             pageNum.innerHTML = 0;
                             totalPage.innerHTML = 0;
                         }

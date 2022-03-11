@@ -8,12 +8,12 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-file-code-o"></i> 床位管理</h1>
-            <p>床位详细信息</p>
+            <h1><i class="fa fa-file-code-o"></i> Bed management</h1>
+            <p>Bed information</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">床位管理</a></li>
+            <li class="breadcrumb-item"><a href="#">Bed management</a></li>
         </ul>
     </div>
     <div class="tile">
@@ -21,12 +21,12 @@
             <div class="container-fluid main-content">
                 <div class="widget-container fluid-height clearfix">
                     <div class="heading clearfix">
-                        {% if not result.position == '护士'%}
+                        {% if not result.position == 'Nurse'%}
                         <i class="icon-table"></i>
 
                         <a id="new_user" class="btn btn-sm btn-primary pull-right"
                            href="/redirect_new_bed/"><i
-                                class="icon-plus fa fa-plus"></i> 新增床位</a>
+                                class="icon-plus fa fa-plus"></i> Add new bed</a>
                         {% endif %}
 
                     </div>
@@ -34,11 +34,11 @@
                         <div class="dataTables_filter">
                             <form class="form-inline">
                                 <div class="btn-group">
-                                    <span>床位名：</span> <input type="text" class="form-control"
+                                    <span>Bed number:</span> <input type="text" class="form-control"
                                                              id="emmployeeId" name="emmployeeId" value="">
                                 </div>
                                 <div class="btn-group">
-                                    <input type="button" class="btn btn-success" value="搜索"
+                                    <input type="button" class="btn btn-success" value="Search"
                                            onclick="show_bed_info()"/>
                                 </div>
                             </form>
@@ -49,19 +49,19 @@
                                     <thead>
                                     <tr align="center">
                                         <th nowrap>ID</th>
-                                        <th nowrap>床位名称</th>
-                                        <th nowrap>床位价格</th>
-                                        <th nowrap>床位状态</th>
-                                        <th nowrap>入住患者</th>
-                                        <th class="action-column" id="operate">操作</th>
+                                        <th nowrap>Bed number</th>
+                                        <th nowrap>Bed price</th>
+                                        <th nowrap>Bed status</th>
+                                        <th nowrap>Patient</th>
+                                        <th class="action-column" id="operate">Operate:</th>
                                     </tr>
                                     </thead>
                                     <tbody align="center">
                                     </tbody>
                                 </table>
-                                <div id="pages"><span id="spanFirst">首页</span> <span id="spanPre">上一页</span> <span
-                                        id="spanNext">下一页</span> <span id="spanLast">尾页</span> 第<strong
-                                        id="spanPageNum"></strong>页/共<strong id="spanTotalPage"></strong>页
+                                <div id="pages"><span id="spanFirst">Home page</span> <span id="spanPre">Last page</span> <span
+                                        id="spanNext">Next page</span> <span id="spanLast">End page</span> The<strong
+                                        id="spanPageNum"></strong>page/<strong id="spanTotalPage"></strong>Page
                                 </div>
                             </div>
                         </div>
@@ -77,20 +77,20 @@
                 <div class="modal-content">
                     <div class="modal-header">
 
-                        <h4 class="modal-title" id="myModalLabel">修改床位信息</h4>
+                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" role="form">
                             <div class="form-inline form-group">
-                                <label for="name" class="col-sm-5">床位名称: </label>
+                                <label for="name" class="col-sm-5">Bed number</label>
                                 <input type="hidden" id="userId" name="userId" type="text"/>
-                                <input id="name" class='form-control col-sm-5' name="name" type="text" title="床位名称"
-                                       placeholder="请输入床位名称" required="required"/>
+                                <input id="name" class='form-control col-sm-5' name="name" type="text" title="Bed number"
+                                       placeholder="Please enter the bed number" required="required"/>
                             </div>
 
                             <div class="form-inline form-group">
-                                <label for="price" class="col-sm-5">床位价格: </label>
+                                <label for="price" class="col-sm-5">Bed price:</label>
                                 <select id="price" class='form-control col-sm-5' name="price">
 
                                 </select>
@@ -101,9 +101,9 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
                         </button>
-                        <input type="button" class="btn btn-primary" id="update" value="提交"/>
+                        <input type="button" class="btn btn-primary" id="update" value="Submit"/>
 
 
                         <span id="tip"> </span>
@@ -118,8 +118,8 @@
 
 {% block script %}
 <script type=text/javascript>
-<!--    var price_array = ['400', '500', '600', '700', '800', '900', '1000'];-->
-    var price_array = ['50', '100', ,'150','200','250','300','350','400','450','500','550','600','650','700','750','800','850','900','950','1000']
+
+    var price_array = ['50', '100', '150','200','250','300','350','400','450','500','550','600','650','700','750','800','850','900','950','1000']
 
     function modeify_bed_info(bedId) {
         $.ajax({
@@ -134,9 +134,9 @@
                     var price_option = "";
                     for (var i = 0; i < price_array.length; i++) {
                         if (price_array[i] == price) {
-                            price_option += "<option selected>" + price_array[i] + "元</option>";
+                            price_option += "<option selected>" + price_array[i] + "Pound</option>";
                         } else {
-                            price_option += "<option>" + price_array[i] + "元</option>";
+                            price_option += "<option>" + price_array[i] + "Pound</option>";
                         }
                     }
                     ;
@@ -204,15 +204,15 @@
             table_value += "<td>";
             table_value += bed_id + "</td><td>";
             table_value += info[i].name + "</td><td>";
-            table_value += info[i].price + "元</td><td>";
+            table_value += info[i].price + "Pound</td><td>";
             table_value += info[i].status + "</td><td>";
             table_value += info[i].patient_name + "</td><td>";
-            if ('{{result.position}}' == '护士') {
-                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + bed_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "没有权限" + "</a>";
+            if ('{{result.position}}' == 'Nurse') {
+                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + bed_id + " data-target='#modifyUserInfo' onclick='modeify_user_info(this.id)' disabled='disabled'> " + "No access" + "</a>";
 
             } else {
-                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + bed_id + " data-target='#modifyUserInfo' onclick='modeify_bed_info(this.id)'>" + "修改" + "</a>";
-                table_value += "<button class='btn btn-danger' id=" + "'" + bed_id + "'" + "name='delete' onclick='delete_user_info(this.id)'> 删除</button></td>";
+                table_value += "<a class='btn btn-info' data-toggle='modal' id =" + bed_id + " data-target='#modifyUserInfo' onclick='modeify_bed_info(this.id)'>" + "Edit" + "</a>";
+                table_value += "<button class='btn btn-danger' id=" + "'" + bed_id + "'" + "name='delete' onclick='delete_user_info(this.id)'> Delete</button></td>";
             }
             table_value += "</tr>";
         }
@@ -261,38 +261,38 @@
 
     //上一页链接
     function preLink() {
-        spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>";
+        spanPre.innerHTML = "<a href='javascript:pre();'>Last page</a>";
     }
 
     function preText() {
-        spanPre.innerHTML = "上一页";
+        spanPre.innerHTML = "Last page";
     }
 
     //下一页链接
     function nextLink() {
-        spanNext.innerHTML = "<a href='javascript:next_page();'>下一页</a>";
+        spanNext.innerHTML = "<a href='javascript:next_page();'>Next page</a>";
     }
 
     function nextText() {
-        spanNext.innerHTML = "下一页";
+        spanNext.innerHTML = "Next page";
     }
 
     //首页链接
     function firstLink() {
-        spanFirst.innerHTML = "<a href='javascript:first_page();'>首页</a>";
+        spanFirst.innerHTML = "<a href='javascript:first_page();'>Home page</a>";
     }
 
     function firstText() {
-        spanFirst.innerHTML = "首页";
+        spanFirst.innerHTML = "Home page";
     }
 
     //尾页链接
     function lastLink() {
-        spanLast.innerHTML = "<a href='javascript:last_page();'>末页</a>";
+        spanLast.innerHTML = "<a href='javascript:last_page();'>End page</a>";
     }
 
     function lastText() {
-        spanLast.innerHTML = "末页";
+        spanLast.innerHTML = "End page";
     }
 
     //上一页
@@ -328,12 +328,12 @@
     //删除用户
     function delete_user_info(bed_id) {
         swal({
-            title: "确定删除么?",
-            text: "你将无法恢复这个床位！",
+            title: "Confirm delete?",
+            text: "You will not be able to recover this bed!",
             type: "warning",
             showCancelButton: true,
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
             closeOnConfirm: false,
             closeOnCancel: false
         }, function (isConfirm) {
@@ -344,16 +344,16 @@
                     url: "/delete_bed/",
                     data: {'bed_id': bed_id},
                     success: function (data) {
-                        swal("已删除!", "床位已被删除", "success");
+                        swal("Deleted", "Bed has been deleted", "success");
                         window.location.href = '/redirect_bed/';
                     },
                     error: function (xhr) {
-                        swal("删除失败!", "床位未被删除", "error");
+                        swal("Delete failed!", "Bed has not been removed", "error");
                     }
                 });
 
             } else {
-                swal("已取消", "删除操作已取消 :)", "error");
+                swal("Canceled", "The delete operation has been cancelled :)", "error");
             }
         });
 
@@ -382,10 +382,10 @@
                         for (var i = 1; i < table_rows.length; i++) {
                             table_rows[i].style.display = 'none';
                         }
-                        spanPre.innerHTML = "上一页";
-                        spanFirst.innerHTML = "首页";
-                        spanNext.innerHTML = "下一页";
-                        spanLast.innerHTML = "末页";
+                        spanPre.innerHTML = "Last page";
+                        spanFirst.innerHTML = "Home page";
+                        spanNext.innerHTML = "Next page";
+                        spanLast.innerHTML = "End page";
                         pageNum.innerHTML = 0;
                         totalPage.innerHTML = 0;
                     }

@@ -14,9 +14,9 @@ class Migration(migrations.Migration):
             name='Department',
             fields=[
                 ('department_id', models.AutoField(primary_key=True, serialize=False)),
-                ('name', models.CharField(default='', max_length=50, verbose_name='科室名称')),
-                ('doctor_name', models.CharField(default='', max_length=50, verbose_name='主治医生')),
-                ('addr', models.IntegerField(default='', verbose_name='楼层')),
+                ('name', models.CharField(default='', max_length=50, verbose_name='Department name')),
+                ('doctor_name', models.CharField(default='', max_length=50, verbose_name='Doctor')),
+                ('addr', models.IntegerField(default='', verbose_name='Floor')),
             ],
             options={
                 'db_table': 'department',

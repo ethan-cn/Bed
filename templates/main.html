@@ -8,19 +8,18 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>首页</h1>
-         
+          <h1><i class="fa fa-dashboard"></i>Home page</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">首页</a></li>
+          <li class="breadcrumb-item"><a href="#">Home page</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-6 col-lg-3">
           <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>用户数量</h4>
+              <h4>Number of users</h4>
               <p><b>{{result.user_count}}</b></p>
             </div>
           </div>
@@ -28,7 +27,7 @@
         <div class="col-md-6 col-lg-3">
           <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
             <div class="info">
-              <h4>入住数量</h4>
+              <h4>Number of occupants</h4>
               <p><b>{{ result.bed1 }}</b></p>
             </div>
           </div>
@@ -36,7 +35,7 @@
         <div class="col-md-6 col-lg-3">
           <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
             <div class="info">
-              <h4>空余床位</h4>
+              <h4>Spare bed space</h4>
               <p><b>{{ result.bed0 }}</b></p>
             </div>
           </div>
@@ -44,7 +43,7 @@
         <div class="col-md-6 col-lg-3">
           <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
             <div class="info">
-              <h4>科室数量</h4>
+              <h4>Number of department</h4>
               <p><b>{{ result.department_count}}</b></p>
             </div>
           </div>
@@ -53,7 +52,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">入院病例|出院病例（单位：位）</h3>
+            <h3 class="tile-title">Admissions|Discharges (in units)</h3>
             <div class="embed-responsive embed-responsive-16by9">
               <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
             </div>
@@ -61,7 +60,7 @@
         </div>
         <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">床位利用率：{{result.bed_available}}</h3>
+            <h3 class="tile-title">Bed utilization rate:{{result.bed_available}}</h3>
             <div class="embed-responsive embed-responsive-16by9">
               <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
             </div>
@@ -104,19 +103,18 @@
       		value: "{{result.bed1}}",
       		color: "#46BFBD",
       		highlight: "#5AD3D1",
-      		label: "已用床位"
+      		label: "Occupied beds"
       	},
       	{
       		value: "{{result.bed0}}",
       		color:"#F7464A",
       		highlight: "#FF5A5E",
-      		label: "空余床位"
+      		label: "Spare beds"
       	}
       ]
       
       var ctxl = $("#lineChartDemo").get(0).getContext("2d");
       var lineChart = new Chart(ctxl).Line(data);
-      
       var ctxp = $("#pieChartDemo").get(0).getContext("2d");
       var pieChart = new Chart(ctxp).Pie(pdata);
     </script>
