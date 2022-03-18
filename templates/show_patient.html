@@ -178,7 +178,7 @@
 
         })
 
-        //获取第一页用户信息
+        //Get user information of the first page
         var total_page;
 
         function get_user_data(current_page) {
@@ -200,16 +200,16 @@
 
         var current_page = 1;
         var totalPage = document.getElementById("spanTotalPage");
-        var pageNum = document.getElementById("spanPageNum"); //获取当前页<span>
-        var spanPre = document.getElementById("spanPre"); //获取上一页<span>
-        var spanNext = document.getElementById("spanNext"); //获取下一页<span>
-        var spanFirst = document.getElementById("spanFirst"); //获取第一页<span>
-        var spanLast = document.getElementById("spanLast"); //获取最后一页<span>
+        var pageNum = document.getElementById("spanPageNum"); //Get current page<span>
+        var spanPre = document.getElementById("spanPre"); //Get previous page<span>
+        var spanNext = document.getElementById("spanNext"); //Get next page<span>
+        var spanFirst = document.getElementById("spanFirst"); //Get the first page<span>
+        var spanLast = document.getElementById("spanLast"); //Get the last page<span>
 
         var info = get_user_data(current_page);
 
         function show_table() {
-            //获取第一页用户信息
+            //Get user information of the first page
             var table_value = '<tr "data-key" ="1">';
             for (var i = 0; i < info.length; i++) {
                 var patient_id = info[i].id;
@@ -275,7 +275,7 @@
             pageNum.innerHTML = current_page;
         }
 
-        //上一页链接
+        //Privious page links
         function preLink() {
             spanPre.innerHTML = "<a href='javascript:pre();'>Last page</a>";
         }
@@ -283,7 +283,7 @@
         function preText() {
             spanPre.innerHTML = "Last page";
 
-            //下一页链接
+            //Next page links
             function nextLink() {
                 spanNext.innerHTML = "<a href='javascript:next_page();'>Next page</a>";
             }
@@ -292,7 +292,7 @@
                 spanNext.innerHTML = "Next page";
             }
 
-            //首页链接
+            //First page links
             function firstLink() {
                 spanFirst.innerHTML = "<a href='javascript:first_page();'>Home page</a>";
             }
@@ -301,7 +301,7 @@
                 spanFirst.innerHTML = "Home page";
             }
 
-            //尾页链接
+            //Last page links
             function lastLink() {
                 spanLast.innerHTML = "<a href='javascript:last_page();'>End page</a>";
             }
@@ -310,7 +310,7 @@
                 spanLast.innerHTML = "End page";
             }
 
-            //上一页
+            //Previous page
             function pre() {
                 current_page -= 1;
                 info = get_user_data(current_page);
@@ -318,21 +318,21 @@
 
             }
 
-            //首页
+            //First page
             function first_page() {
                 current_page = 1;
                 info = get_user_data(current_page);
                 show_table()
             }
 
-            //下一页
+            //Next page
             function next_page() {
                 current_page += 1;
                 info = get_user_data(current_page);
                 show_table()
             }
 
-            //尾页
+            //Last page
             function last_page() {
                 current_page = total_page;
                 info = get_user_data(current_page);
@@ -340,7 +340,7 @@
             }
 
 
-            //删除用户
+            //Delete user
             function delete_user_info(patient_id) {
                 swal({
                     title: "Are you sure you want to stop the bed?",
@@ -374,7 +374,7 @@
 
             }
 
-            //通过用户名模糊查询用户
+            //Fuzzy user search by username
             function show_user_info() {
                 current_page = 1;
                 let user_name = $('#emmployeeId').val();

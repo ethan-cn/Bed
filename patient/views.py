@@ -18,7 +18,7 @@ from django.contrib import auth
 @my_login
 def redirect_patient(request):
     """
-    跳转病人列表信息页
+    Jump to patient list information page
     :param request:
     :return:
     """
@@ -38,7 +38,7 @@ def get_session_info(request):
 @my_login
 def redirect_new_patient(request):
     """
-    跳转入院登记页
+    Jump to admission registration page
     :param request:
     :return:
     """
@@ -64,7 +64,7 @@ def redirect_new_patient(request):
 @my_login
 def redirect_department(request):
     """
-    跳转入院登记页
+    Jump to admission registration page
     :param request:
     :return:
     """
@@ -76,7 +76,7 @@ def redirect_department(request):
 @my_login
 def redirect_new_department(request):
     """
-    跳转入院登记页
+    Jump to admission registration page
     :param request:
     :return:
     """
@@ -87,7 +87,7 @@ def redirect_new_department(request):
 
 def query_department(req):
     """
-    查询入院信息详情页
+    Check admission details page
     :param req:
     :return:
     """
@@ -114,7 +114,7 @@ def query_department(req):
 
 def query_patient(req):
     """
-    查询入院信息详情页
+    Check admission details page
     :param req:
     :return:
     """
@@ -155,7 +155,7 @@ def query_patient(req):
 
 def get_department_by_name(request):
     """
-    通过用户名模糊查询用户信息
+    Fuzzy search for user information by username
     :return:
     """
     response_data = {}
@@ -185,7 +185,7 @@ def get_department_by_name(request):
 @csrf_exempt
 def add_patient(request):
     """
-    新增入院管理
+    Add admission management
     :param request:
     :return:
     """
@@ -246,7 +246,7 @@ import traceback
 @csrf_exempt
 def modify_patient(request):
     """
-    修改用户信息
+    Modify user information
     :return:
     """
     response_data = {}
@@ -284,7 +284,7 @@ def modify_patient(request):
 @csrf_exempt
 def modify_department(request):
     """
-    修改用户信息
+    Modify user information
     :return:
     """
     response_data = {}
@@ -308,7 +308,7 @@ def modify_department(request):
 @csrf_exempt
 def get_patient_by_id(request):
     """
-    通过id模糊查询用户信息
+    Fuzzy search for user information by id
     :return:
     """
     response_data = {}
@@ -354,7 +354,7 @@ def get_department_by_id(request):
 @csrf_exempt
 def delete_patient(request):
     """
-    停床
+    Stop bed
     :return:
     """
     response_data = {}
@@ -379,7 +379,7 @@ def delete_patient(request):
 @csrf_exempt
 def delete_department(request):
     """
-    停床
+    Stop bed
     :return:
     """
     response_data = {}
@@ -400,7 +400,7 @@ def delete_department(request):
 
 def get_patient_by_name(request):
     """
-    通过名称模糊查询患者信息
+    Fuzzy search for patient information by name
     :return:
     """
     response_data = {}
