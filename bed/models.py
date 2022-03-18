@@ -2,9 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-# 导入Django自带用户模块
 
-# 文章
+"""Bed information"""
 class Bed(models.Model):
     STATUS_CHOICES = (
         (0, 'Empty'),

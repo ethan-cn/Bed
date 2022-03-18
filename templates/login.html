@@ -91,10 +91,10 @@
             $.ajax({
                 type: 'GET',
                 url: "/login_check/",
-                dataType: 'json', //服务端返回json格式的数据
+                dataType: 'json', //The server side returns data in json format
                 data: {'name':userName,'password':password},
                 contentType: "application/json; charset=utf-8",
-                success: function (data) { // 这里的data就是返回的json格式的数据
+                success: function (data) { // The data here is the returned data in json format
 
                     window.location.href = "/index/"
                 },
@@ -112,7 +112,7 @@
 
 var cpparam = {
   setParam: function(href, key, value){
-    //重新加载整个页面
+    //Reload the entire page
     var isReplaced = false;
     var urlArray = href.split("?");
     if(urlArray.length > 1){
