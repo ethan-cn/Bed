@@ -79,7 +79,7 @@ def add_bed(request):
     """
     name = request.POST.get('name')
     price = request.POST.get('price')
-    price = price[:-1]
+    # price = price[:-1]
     status = 0
     Bed.objects.create(
         bed_name=name,

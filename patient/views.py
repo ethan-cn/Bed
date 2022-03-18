@@ -196,7 +196,7 @@ def add_patient(request):
     else:
         gender = 1
     age = request.POST.get('age')
-    price = request.POST.get('price')[:-1]
+    price = request.POST.get('price')
     department = request.POST.get('department')
     description = request.POST.get('description')
     create_time = timezone.now().strftime("%Y-%m-%d %H:%M:%S")
