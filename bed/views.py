@@ -35,7 +35,7 @@ def redirect_new_bed(request):
 
 def query_bed(request):
     """
-        查询入院信息详情页
+        Check admission details page
         :param req:
         :return:
         """
@@ -73,7 +73,7 @@ def query_bed(request):
 @csrf_exempt
 def add_bed(request):
     """
-    新增床位
+    Add bed
     :param request:
     :return:
     """
@@ -104,8 +104,8 @@ def get_session_info(request):
 @csrf_exempt
 def delete_bed(request):
     """
-    删除用户信息
-    :param user_id: 用户id
+    Delete bed
+    :param user_id:
     :return:
     """
     bed_id = request.POST.get('bed_id')
@@ -125,7 +125,7 @@ def delete_bed(request):
 @csrf_exempt
 def modify_bed(request):
     """
-    修改用户信息
+    Modify bed information
     :return:
     """
     response_data = {}
@@ -148,7 +148,7 @@ def modify_bed(request):
 
 def get_bed_by_id(request):
     """
-    通过id模糊查询用户信息
+    Fuzzy search for user information by id
     :return:
     """
     response_data = {}
@@ -170,6 +170,10 @@ def get_bed_by_id(request):
 
 
 def get_bed_by_name(request):
+    """
+    Fuzzy search for bed by name
+    :return:
+    """
     response_data = {}
     response_data['bed'] = []
     dict_values = {}

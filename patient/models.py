@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from bed.models import Bed
 
-
+"""Patient Information"""
 class Patient(models.Model):
     GENDER_CHOICES = (
         (0, 'Male'),
@@ -24,7 +24,7 @@ class Patient(models.Model):
     class Meta:
         db_table = 'patient'
 
-
+"""Department Information"""
 class Department(models.Model):
     department_id = models.AutoField(primary_key=True)
     name = models.CharField('Department name', default='', max_length=50)

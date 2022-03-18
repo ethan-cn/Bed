@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+"""Permission Type"""
 Permission = (
     ('VISITOR','General Users'),
     ('UPDATE','Modify Permission'),
@@ -12,7 +13,7 @@ Permission = (
     ('ADMIN', 'Administrator Permission')
 )
 
-
+"""Role Information"""
 class Role(models.Model):
     ROLE_CHOICES = (
         (0, 'Doctor'),
@@ -47,6 +48,7 @@ class RolePermission(models.Model):
         unique_together = ('role_code', 'pms_code')
         db_table = 'role_permission'
 
+"""User Information"""
 class UserTable(models.Model):
     GENDER_CHOICES = (
         (0, 'Male'),

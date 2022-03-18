@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 
-# 
+"""Bed information"""
 class Bed(models.Model):
     STATUS_CHOICES = (
         (0, 'Empty'),

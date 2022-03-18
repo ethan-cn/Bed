@@ -228,6 +228,11 @@ def add_patient(request):
 
 @csrf_exempt
 def add_department(request):
+    """
+    Add department 
+    :param request:
+    :return:
+    """
     name = request.POST.get('name')
     doctor_name = request.POST.get('doctor_name')
     addr = request.POST.get('addr')
@@ -333,6 +338,10 @@ def get_patient_by_id(request):
 
 @csrf_exempt
 def get_department_by_id(request):
+    """
+    Fuzzy search for department by id
+    :return:
+    """
     response_data = {}
     response_data['department'] = []
     department_id = request.GET.get('department_id')
@@ -354,7 +363,7 @@ def get_department_by_id(request):
 @csrf_exempt
 def delete_patient(request):
     """
-    Stop bed
+    Delete patient
     :return:
     """
     response_data = {}
@@ -379,7 +388,7 @@ def delete_patient(request):
 @csrf_exempt
 def delete_department(request):
     """
-    Stop bed
+    Delete department
     :return:
     """
     response_data = {}

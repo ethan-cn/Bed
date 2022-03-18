@@ -235,11 +235,21 @@ def delete_user(request):
 
 @csrf_exempt
 def login_out(request):
+    """
+    Jump to login page, allow user to log out
+    :param request:
+    :return:
+    """
     request.session.flush()
     return HttpResponseRedirect('/')
 
 @csrf_exempt
 def login_check(request):
+    """
+    Check that login information(account and password) are correct
+    :param request:
+    :return:
+    """
     response_data = {}
     name = request.GET.get('name')
     password = request.GET.get('password')
