@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Encoding">
-    <file url="file://C:/Program Files/Python37/Lib/socket.py" charset="GBK" />
-    <file url="file://C:/Program Files/Python37/Lib/threading.py" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/templates/main.html" charset="UTF-8" />
-  </component>
-</project>
