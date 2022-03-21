@@ -125,10 +125,10 @@ APPEND_SLASH=False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-# 登录路由
+# Login routing
 LOGIN_URL = '/'
 
-# 静态文件地址
+# Static file address
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
